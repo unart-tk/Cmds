@@ -1,0 +1,4 @@
+#!/bin/sh
+u=$CMDS_HOME
+[ -e $u ] || { echo "Error with CMDS_HOME "; exit 1; }
+. $u/fileutils.sh && grepi "$@"

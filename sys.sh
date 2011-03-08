@@ -1,15 +1,18 @@
-# std lib
-# =============================
+# sys cmds
+# =======
 #
 #    by: ben, untar.org
 #    in: bash, utils
 #
 set -u ; set -e
 
-die (){ echo >&2 "$@"; exit 1; }
-
-usage(){ die "Usage - $1"; }
-
+std=$CMDS_HOME/lib/std.sh
+if [ -f $std ] ; then
+    . $std
+else
+    echo "Couldn't load std libs $std"
+    exit 1
+fi
 
 del_doc='A trash for the cli, a save rm '
 del () {
@@ -19,3 +22,4 @@ del () {
     [ -d "$trash" ] || mkdir -p "$trash"
     mv "$file" "$trash"/
 }
+
